@@ -42,6 +42,11 @@ function enqueue(client) {
     bestMatch.emit('chat join', client.data.issues, client.data.desc);
 }
 
+
+app.get('/', (req, res) => {
+  res.send('✅ Healic backend is up!');
+});
+
 io.on('connection', (socket) => {
     socket.on('queue', (issues, desc) => {
         socket.data.issues = issues;
