@@ -1,0 +1,66 @@
+.chat {
+  margin: 0 auto;
+  width: 75%;
+  padding-bottom: 15px;
+}
+
+.chat h1 {
+  text-align: center;
+}
+
+.chat-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chat-buttons button {
+  flex: 1;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.chat-submit {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.chat-submit textarea {
+  resize: none;
+  height: 125px;
+  width: 75%;
+  max-width: 550px;
+  font-family: Arial;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #FEDDD8;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.chat-submit textarea::placeholder {
+  color: #808080;
+}
+
+.chat-submit textarea::-ms-input-placeholder {
+  color: #808080;
+}
+
+@media only screen and (max-width: 1000px) {
+  .chat-submit textarea {
+    width: 100%;
+  }
+}
+
+.chat-close {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.chat-start {
+  margin-top: 10px;
+  font-size: 20px;
+}

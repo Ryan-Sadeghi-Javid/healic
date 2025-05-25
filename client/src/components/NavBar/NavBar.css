@@ -1,0 +1,14 @@
+.nav-bar {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #EE6E73;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 28px;
+  color: #ffffff;
+  margin-left: 20px;
+}

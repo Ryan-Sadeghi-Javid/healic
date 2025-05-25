@@ -1,0 +1,31 @@
+.link {
+  font-size: 20px;
+  text-decoration: none;
+  margin: 15px;
+  color: #ffffff;
+  position: relative;
+  opacity: 0.9;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.link::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: all .45s;
+  content: "";
+}
+
+.link:hover::before {
+  width: 100%;
+}
+
+.activeLink {
+  font-weight: bold;
+}

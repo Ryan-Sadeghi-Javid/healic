@@ -1,0 +1,10 @@
+.chat-button, .chat-button:focus {
+  padding: 10px;
+  cursor: pointer;
+  background: #CFE3E2;
+  border: 1px solid #B9CBD9;
+}
+
+.chat-button-active, .chat-button-active:focus  {
+  background: #B9CBD9;
+}

@@ -1,0 +1,165 @@
+.text-center {
+  text-align: center;
+}
+
+.row {
+  margin-right: 145px;
+  margin-left: 95px;
+  padding-bottom: 15px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.row::after,
+.container:after {
+  clear: both;
+}
+
+.breaking-barriers-item {
+  margin: 1px -15px 0 -14px;
+  padding: 0;
+}
+
+.breaking-barriers-item .hover-bg {
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+
+.hover-bg .hover-text {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+  background: linear-gradient(
+    to right,
+    rgba(99, 114, 255, 0.8) 0%,
+    rgba(92, 169, 251, 0.8) 100%
+  );
+  padding: 30% 0 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.hover-bg .hover-text > h4 {
+  opacity: 0;
+  color: #fff;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  transition: all 0.3s;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.hover-bg:hover .hover-text > h4 {
+  opacity: 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.hover-bg:hover .hover-text {
+  opacity: 1;
+}
+
+.col-md-4,
+.col-lg-4,
+.col-sm-6 {
+  position: relative;
+  min-height: 1px;
+}
+
+@media (min-width: 992px) {
+  .col-md-4 {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-4 {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-sm-6 {
+    float: left;
+    width: 50%;
+  }
+}
+
+.breaking-barriers-items {
+  display: grid;
+  gap: 4px 4px;
+  grid-template-columns: repeat(3, 1fr);
+  width: -210px;
+  margin: 0 auto;
+}
+
+.breaking-barriers-items div {
+  flex: 0 0 32%;
+  height: 250px;
+  width: 333.333333333px;
+}
+
+.breaking-barriers-buttons {
+  position: absolute;
+}
+
+.breaking-barriers-button {
+  z-index: 2;
+  position: relative;
+  display: block;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.breaking-barriers-button-bottom {
+  z-index: 2;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.blurred-image {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}

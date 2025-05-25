@@ -1,0 +1,24 @@
+@import "../BreakingBarriers.css";
+
+img {
+  border: 0;
+}
+
+@media print {
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

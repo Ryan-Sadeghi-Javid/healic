@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.live-chat-info {
+	margin: 0 auto;
+	width: 600px;
+	max-width: 95%;
+}
+
+.live-chat-info p {
+	word-wrap: break-word;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.live-chat-status {
+  text-align: center;
+}
+
+.chat-bubbles {
+  margin: 0 auto;
+  width: 600px;
+  max-width: 95%;
+}
+
+:root {
+	--color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
+	--color-ink-low-contrast: rgba(60, 60, 67, 0.3);
+	--color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
+	--color-interaction: #1e4bd1;
+	--color-interaction-minus-two: rgba(73, 133, 224, 0.12);
+	--color-danger: #b50706;
+	--color-bg-low-contrast: #eff1f2;
+	--color-ink-high-contrast: #121212;
+	--color-bg-high-contrast: #ffffff;
+}
+
+.live-chat-input {
+  font-family: "Roboto";
+}
+
+.live-chat-input .container {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+	margin-top: 30px;
+	padding: 0;
+	border-radius: 4px;
+	width: 600px;
+	max-width: 95%;
+}
+
+.live-chat-input form {
+	width: 100%;
+}
+
+.live-chat-input .input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+.input-filled > input {
+	border: none;
+	border-bottom: 0.125rem solid var(--color-ink-medium-contrast);
+	width: 100%;
+	height: 52px;
+	font-size: 1.0625rem;
+	padding-left: 0.875rem;
+	padding-right: 0.875rem;
+	line-height: 147.6%;
+	padding-top: 0.825rem;
+	padding-bottom: 0.5rem;
+	box-sizing: border-box;
+}
+
+.input-filled > input:focus {
+	outline: none;
+}
+
+.input-filled > .input-label {
+	position: absolute;
+	top: 0.9375rem;
+	left: 0.875rem;
+	line-height: 147.6%;
+	color: var(--color-ink-medium-contrast);
+	transition: top .2s;
+}
+
+.input-filled > svg {
+	position: absolute;
+	top: 0.9375rem;
+	right: 0.875rem;
+	fill: var(--color-ink-medium-contrast);
+}
+
+.input-filled > .input-helper {
+	font-size: 0.9375rem;
+	color: var(--color-ink-medium-contrast);
+	letter-spacing: 0.0275rem;
+	margin: 0.125rem 0.875rem;
+}
+
+.input-filled > input:hover {
+	background: var(--color-interaction-minus-two);
+	border-color: var(--color-ink-high-contrast);
+}
+
+.input-filled > input:focus + .input-label,
+.input-filled > input:valid + .input-label {
+	top: 0;
+	font-size: 0.9375rem;
+	margin-bottom: 32px;
+}
+
+.input-filled:not(.input-danger) > input:focus + .input-label {
+	color: var(--color-interaction);
+}
+
+.input-filled:not(.input-danger) > input:focus {
+	border-color: var(--color-interaction);
+}
+
+.input-filled:not(.input-danger) > input:focus ~ svg {
+	fill: var(--color-ink-high-contrast);
+}
+
+.input-filled.input-danger > .input-label,
+.input-filled.input-danger > .input-helper {
+	color: var(--color-danger);
+}
+
+.input-danger > svg {
+	fill: var(--color-danger);
+}
+
+.input-danger > input {
+	border-color: var(--color-danger);
+}
+
+.input-filled > input {
+	background: var(--color-bg-low-contrast);
+}
