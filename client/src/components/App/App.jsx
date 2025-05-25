@@ -9,7 +9,7 @@ import BreakingBarriers from '../BreakingBarriers/BreakingBarriers'
 import './App.css'
 import io from 'socket.io-client'
 
-const socket = io(process.env.SERVER_URL ?? 'http://localhost:3001')
+const socket = io(process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3001')
 
 export default function App() {
   const chatData = useRef(null)
