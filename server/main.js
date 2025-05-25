@@ -3,14 +3,20 @@ const PORT = process.env.PORT ?? 3001;
 const express = require('express');
 const cors = require('cors');
 const app = express();
+
 app.use(cors());
+
+app.get('/', (req, res) => {
+  res.send('✅ Healic backend is up!');
+});
+
 const http = require('http');
 const server = http.createServer(app);
+
 const io = require('socket.io')(server, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST'],
-    credentials: true
   }
 });
 
@@ -42,13 +48,10 @@ function enqueue(client) {
     bestMatch.emit('chat join', client.data.issues, client.data.desc);
 }
 
-
-app.get('/', (req, res) => {
-  res.send('✅ Healic backend is up!');
-});
-
 io.on('connection', (socket) => {
+    console.log('🟢 Connected:', socket.id);
     socket.on('queue', (issues, desc) => {
+        console.log('📥 Queue:', issues, desc);
         socket.data.issues = issues;
         socket.data.desc = desc;
         enqueue(socket);
