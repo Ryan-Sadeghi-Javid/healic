@@ -3,16 +3,12 @@ const PORT = process.env.PORT ?? 3001;
 const express = require('express');
 const cors = require('cors');
 const app = express();
-app.use(cors({
-  origin: 'https://healic.vercel.app',
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
+app.use(cors());
 const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://healic.vercel.app',
+    origin: '*',
     methods: ['GET', 'POST'],
     credentials: true
   }
