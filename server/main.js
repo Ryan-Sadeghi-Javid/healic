@@ -1,14 +1,23 @@
 const PORT = process.env.PORT ?? 3001;
 
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors({
+  origin: 'https://healic.vercel.app',
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
-    cors: {
-        origin: '*',
-    },
-})
+  cors: {
+    origin: 'https://healic.vercel.app',
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
+});
+
 
 function enqueue(client) {
     const sockets = io.sockets.adapter.rooms.get('queue');
