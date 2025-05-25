@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.send('✅ Healic backend is up!');
 });
 
+app.get('/test', (req, res) => {
+  res.send('🧪 test route works');
+});
+
 const http = require('http');
 const server = http.createServer(app);
 
