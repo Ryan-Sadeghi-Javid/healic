@@ -43,9 +43,9 @@ app.post('/api/ai/suggest', async (req, res) => {
 
     res.json({ suggestion: response.choices[0].message.content });
   } catch (err) {
-    console.error("OpenAI error:", err);
-    res.status(500).json({ error: "AI suggestion failed" });
-  }
+  console.error("❌ OpenAI error:", err.response?.data || err.message || err);
+  res.status(500).json({ error: "AI suggestion failed" });
+}
 });
 
 

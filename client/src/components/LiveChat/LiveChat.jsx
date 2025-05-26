@@ -48,7 +48,7 @@ export default function Chat({ socket, chatData }) {
 
  const fetchAiSuggestion = async (userMessage) => {
   try {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/ai/suggest`, {
+    const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/ai/suggest`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: userMessage })
