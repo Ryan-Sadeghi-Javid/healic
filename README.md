@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# 🧠 Healic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Healic** is a full-stack mental health web application that enables anonymous peer-to-peer conversations, resource sharing, and charitable giving. Built with accessibility and emotional well-being in mind, Healic offers real-time chat powered by `Socket.io` and context-aware message suggestions using the `OpenAI API`, helping users navigate difficult conversations and feel supported.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌟 Features
 
-### `npm start`
+- 🔒 **Anonymous Chat** — Real-time, peer-to-peer messaging without user accounts
+- 💡 **AI Message Suggestions** — Integrates OpenAI to provide intelligent, context-aware prompts based on conversation history
+- 📚 **Mental Health Resources** — Curated articles and support links for a variety of mental health topics
+- 💖 **Charity Support Integration** — Users can access links to donate to mental health organizations
+- 🎨 **Accessible UI** — Clean, responsive design using MaterializeCSS
+- ⚡ **Real-Time Backend** — WebSocket communication with `Socket.io` and RESTful API with `Express.js`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+**Frontend**  
+- `React.js`  
+- `MaterializeCSS`  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Backend**  
+- `Node.js`  
+- `Express.js`  
+- `Socket.io`  
+- `OpenAI API`
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🤖 OpenAI Integration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Healic uses OpenAI’s `gpt-3.5-turbo` model to suggest helpful, empathetic responses. The system analyzes the user’s most recent messages and returns contextually relevant suggestions when users feel stuck in a conversation.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Example prompt logic:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+  "messages": [
+    { "role": "user", "content": "I'm feeling overwhelmed lately." },
+    { "role": "assistant", "content": "That sounds difficult. Would you like to talk more about it?" }
+  ]
+}
