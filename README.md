@@ -31,7 +31,7 @@
 
 ## 🤖 OpenAI Integration
 
-Healic uses OpenAI’s `gpt-3.5-turbo` model to suggest helpful, empathetic responses. The system analyzes the user’s most recent messages and returns contextually relevant suggestions when users feel stuck in a conversation.
+Healic uses OpenAI’s `gpt-4,1` model to suggest helpful, empathetic responses. The system analyzes the user’s most recent messages and returns contextually relevant suggestions when users feel stuck in a conversation.
 
 Example prompt logic:
 
