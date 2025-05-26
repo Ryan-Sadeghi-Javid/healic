@@ -12,6 +12,11 @@ export default function Chat({ socket, chatData }) {
   const navigate = useNavigate()
   const [messages, setMessages] = useState(chatData.current?.cache ?? [])
   const [status, setStatus] = useState('')
+  const [aiSuggestion, setAiSuggestion] = useState(null)
+  const [showSuggestion, setShowSuggestion] = useState(false)
+
+
+  
 
   useEffect(() => {
     if(!chatData.current) {
@@ -20,9 +25,13 @@ export default function Chat({ socket, chatData }) {
     chatData.current.cache = messages
 
     socket.on('chat msg', (content) => {
-      setMessages([...messages, { content, isAuthor: false }])
-      window.scrollTo(window.scrollX, document.body.scrollHeight)
-    })
+        const updatedMessages = [...messages, { content, isAuthor: false }]
+        setMessages(updatedMessages)
+        window.scrollTo(window.scrollX, document.body.scrollHeight)
+
+        fetchAiSuggestion(content)
+      })
+
 
     socket.on('chat leave', () => {
       chatData.current = null
@@ -36,15 +45,36 @@ export default function Chat({ socket, chatData }) {
     }
   }, [chatData, socket, messages])
 
-  const sendMessage = (e) => {
-    e.preventDefault()
-    const value = inputRef.current.value.trim()
-    if(!value) return
-    socket.emit('chat msg', value)
-    inputRef.current.value = ''
-    setMessages([...messages, { content: value, isAuthor: true }])
-    window.scrollTo(window.scrollX, document.body.scrollHeight)
+
+ const fetchAiSuggestion = async (userMessage) => {
+  try {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/ai/suggest`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userMessage })
+    })
+
+    const data = await res.json()
+    setAiSuggestion(data.suggestion)
+    setShowSuggestion(false) // wait until user clicks
+  } catch (err) {
+    console.error('AI fetch failed', err)
   }
+}
+
+
+  const sendMessage = (e) => {
+  e.preventDefault()
+  const value = inputRef.current.value.trim()
+  if (!value) return
+
+  socket.emit('chat msg', value)
+  inputRef.current.value = ''
+  setMessages([...messages, { content: value, isAuthor: true }])
+  setAiSuggestion(null)
+  window.scrollTo(window.scrollX, document.body.scrollHeight)
+}
+
 
   const disconnect = () => {
     chatData.current = null
@@ -78,6 +108,35 @@ export default function Chat({ socket, chatData }) {
           })
         }
       </div>
+{aiSuggestion && (
+  <div style={{ textAlign: 'center', marginTop: 10 }}>
+    {!showSuggestion ? (
+      <button
+        onClick={() => setShowSuggestion(true)}
+        className="waves-effect waves-light btn-small"
+        style={{ backgroundColor: '#e0e0e0', color: '#333' }}
+      >
+        💡 Need help replying?
+      </button>
+    ) : (
+      <div style={{
+        background: '#f9f9f9',
+        borderLeft: '4px solid #9ac5f4',
+        padding: '10px 16px',
+        marginTop: '8px',
+        marginBottom: '10px',
+        borderRadius: '6px',
+        maxWidth: '80%',
+        fontSize: '0.95rem',
+        color: '#444',
+        fontStyle: 'italic',
+        display: 'inline-block'
+      }}>
+        <strong>Suggestion:</strong> {aiSuggestion}
+      </div>
+    )}
+  </div>
+)}
       <div style={{ textAlign: 'center' }}>
         <button className="chat-close waves-effect waves-light btn" type="button" onClick={() => popupRef.current.show(true)}>Disconnect</button>
       </div>

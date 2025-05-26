@@ -1,10 +1,15 @@
+require('dotenv').config();
+
 const PORT = process.env.PORT ?? 3001;
+
 
 const express = require('express');
 const cors = require('cors');
+const OpenAI = require('openai');
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('✅ Healic backend is up!');
@@ -13,6 +18,36 @@ app.get('/', (req, res) => {
 app.get('/test', (req, res) => {
   res.send('🧪 test route works');
 });
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+app.post('/api/ai/suggest', async (req, res) => {
+  const userMessage = req.body.message;
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You're a supportive mental health assistant helping people talk through their problems in a kind and helpful way."
+        },
+        {
+          role: "user",
+          content: `Someone said: "${userMessage}". What is a helpful and empathetic response they could give back?`
+        }
+      ]
+    });
+
+    res.json({ suggestion: response.choices[0].message.content });
+  } catch (err) {
+    console.error("OpenAI error:", err);
+    res.status(500).json({ error: "AI suggestion failed" });
+  }
+});
+
 
 const http = require('http');
 const server = http.createServer(app);
